@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinGrowth</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding: 0px;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background: radial-gradient(circle at 20% 30%, #0f2d2a, #071021 70%);
+color:#fff;
+overflow-x:hidden;
+}
+
+/* GLOBAL TEXT SPACING FIX */
+h1,h2,h3,h4{
+margin-bottom:25px;
+}
+
+p{
+margin-bottom:16px;
+line-height:1.8;
+}
+
+/* TOP BAR */
+.top-bar{
+background:linear-gradient(90deg,#1f4d3f,#1a6b4f);
+padding:10px 10px;
+text-align:center;
+font-size:13px;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 6%;
+background:#071021;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.logo img{
+height:40px;
+width:auto;
+max-width:180px;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+gap:22px;
+}
+
+nav a{
+color:#ffffff;
+text-decoration:none;
+font-size:14px;
+}
+
+nav a:hover{
+color:#34f5c5;
+}
+
+/* HERO */
+.hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:120px 6%;
+gap:80px;
+flex-wrap:wrap;
+min-height:85vh;
+}
+
+.left{
+flex:1;
+min-width:300px;
+}
+
+.left h1{
+font-size:52px;
+font-weight:800;
+line-height:1.2;
+}
+
+.left p{
+color:#cbd5e1;
+max-width:520px;
+}
+
+/* DESK */
+.desk{
+flex:1;
+max-width:420px;
+min-width:300px;
+background:#0d1a2b;
+padding:35px;
+border-radius:20px;
+box-shadow:0 0 80px rgba(52,245,197,0.15);
+}
+
+/* INPUT */
+.input-box{
+background:#111f33;
+padding:20px;
+border-radius:14px;
+margin-bottom:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.currency{
+display:flex;
+align-items:center;
+gap:12px;
+font-weight:600;
+}
+
+.currency img{
+width:26px;
+height:26px;
+object-fit:contain;
+border-radius:50%;
+}
+
+.input-box input{
+background:none;
+border:none;
+color:white;
+font-size:18px;
+text-align:right;
+width:120px;
+outline:none;
+}
+
+/* RATE */
+.rate-box{
+background:#102a22;
+padding:18px;
+border-radius:12px;
+font-size:14px;
+margin-top:15px;
+}
+
+.rate-box strong{
+color:#9be9a8;
+}
+
+/* BUTTON */
+.dm-btn{
+margin-top:22px;
+width:100%;
+padding:16px;
+border-radius:14px;
+font-weight:600;
+background:#25D366;
+color:#fff;
+text-align:center;
+text-decoration:none;
+display:block;
+transition:0.3s;
+}
+
+.dm-btn:hover{
+background:#1ebe5d;
+}
+
+/* SECOND SECTION */
+.platform-section{
+padding:12px 3%;
+}
+
+.platform-card{
+background:#0d1a2b;
+border-radius:24px;
+padding:50px;
+box-shadow:0 0 50px rgba(52,245,197,0.1);
+}
+
+.platform-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:40px;
+}
+
+.platform-left h2{
+font-size:32px;
+}
+
+.base-rate{
+background:#1a332b;
+padding:35px 60px;
+border-radius:20px;
+text-align:center;
+min-width:220px;
+}
+
+.base-rate h1{
+font-size:48px;
+}
+
+/* DOMAIN */
+.domain-box{
+background:#081420;
+margin-top:50px;
+padding:35px;
+border-radius:18px;
+text-align:center;
+}
+
+.domains{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:18px;
+}
+
+.domain{
+background:#111f33;
+padding:14px 26px;
+border-radius:30px;
+font-size:14px;
+}
+
+/* BENCHMARK */
+.benchmark-section{
+padding:60px 5%;
+}
+
+.benchmark-cards{
+display:flex;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.benchmark-card{
+flex:1;
+min-width:260px;
+background:#0d1a2b;
+padding:45px;
+border-radius:20px;
+text-align:center;
+}
+
+.exchange-logo{
+height:70px;
+margin-bottom:25px;
+}
+
+.exchange-logo img{
+max-height:100%;
+max-width:170px;
+}
+
+.price{
+font-size:36px;
+margin:20px 0;
+}
+
+.buy{color:#ff4d4d}
+.sell{color:#34f5c5}
+
+/* FLOATING */
+.floating{
+position:fixed;
+right:20px;
+bottom:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
+z-index:999;
+}
+
+.float-btn{
+width:102px;
+height:102px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#0d1a2b;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+.float-btn:hover{
+transform:scale(1.1);
+}
+
+.float-btn img{
+width:60px;
+height:60px;
+object-fit:contain;
+}
+
+/* FOOTER */
+.footer{
+background:#06101c;
+padding:100px 6% 40px;
+margin-top:10px;
+}
+
+.footer-top{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:50px;
+}
+
+.footer-brand,
+.footer-links,
+.footer-app{
+flex:1;
+min-width:220px;
+}
+
+/* FOOTER LINKS WHITE */
+.footer-links ul{
+list-style:none;
+}
+
+.footer-links ul li{
+margin-bottom:14px;
+}
+
+.footer-links ul li a{
+color:#ffffff;
+text-decoration:none;
+font-size:14px;
+}
+
+.footer-links ul li a:hover{
+color:#34f5c5;
+}
+
+.footer-brand a{
+color:#ffffff;
+text-decoration:none;
+}
+
+.footer-brand a:hover{
+color:#34f5c5;
+}
+
+/* GOOGLE PLAY RESPONSIVE IMPROVED */
+.footer-app img{
+width:100%;
+max-width:200px;
+height:auto;
+display:block;
+margin-top:15px;
+}
+
+/* FOOTER BOTTOM */
+.footer-bottom{
+margin-top:50px;
+padding-top:25px;
+border-top:1px solid rgba(255,255,255,0.08);
+text-align:center;
+color:#9ca3af;
+font-size:14px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:1024px){
+.left h1{font-size:42px;}
+.base-rate h1{font-size:36px;}
+}
+
+@media(max-width:768px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+min-height:auto;
+padding:80px 6%;
+}
+
+.left h1{
+font-size:32px;
+}
+
+.desk{
+width:100%;
+max-width:100%;
+}
+
+.platform-header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.base-rate{
+width:100%;
+text-align:center;
+}
+
+.benchmark-cards{
+flex-direction:column;
+}
+
+.footer-top{
+flex-direction:column;
+gap:40px;
+}
+
+.footer-app img{
+max-width:180px;
+}
+}
+
+@media(max-width:480px){
+
+header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.left h1{
+font-size:26px;
+}
+
+.price{
+font-size:28px;
+}
+
+.base-rate h1{
+font-size:30px;
+}
+
+.float-btn{
+width:80px;
+height:80px;
+}
+
+.float-btn img{
+width:50px;
+height:50px;
+}
+}
+
+/* ===== FOOTER LOGO FIX ===== */
+
+.footer-brand{
+text-align:left;
+}
+
+.footer-brand img,
+.footer-logo{
+display:block;
+width:auto;
+height:55px;          /* Bigger */
+max-width:220px;
+object-fit:contain;
+margin-bottom:18px;
+}
+
+/* Tablet */
+@media(max-width:768px){
+.footer-brand img,
+.footer-logo{
+height:48px;
+max-width:200px;
+}
+}
+
+/* Small Mobile */
+@media(max-width:480px){
+.footer-brand img,
+.footer-logo{
+height:42px;
+max-width:170px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">Official app only supports Android</div>
+
+<header>
+<div class="logo"><img src="images/fingrowth.png" alt="USDTGO Logo"></div>
+<nav>
+<a href="#">Home</a>
+<a href="#">Pricing</a>
+<a href="#">Markets</a>
+<a href="#">Exchange</a>
+<a href="#">Support</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="left">
+    <h1>Instant USDT to INR exchange</h1>
+    <p>Deposit tether and convert to INR instantly.</p>
+  </div>
+
+  <div class="desk">
+
+    <div class="input-box">
+      <div class="currency">
+        <img src="images/usdt.png" alt="USDT">
+        <span>USDT</span>
+      </div>
+      <input type="number" id="usdt" value="1">
+    </div>
+
+    <div class="input-box">
+      <div class="currency">
+        <img src="images/inr.png" alt="INR">
+        <span>INR</span>
+      </div>
+      <input type="text" id="inr" readonly>
+    </div>
+
+    <!-- MOVE THESE INSIDE DESK -->
+    <div class="rate-box">
+      Our current rate <strong id="rateText"></strong>
+    </div>
+
+    <a class="dm-btn"
+       href="https://wa.me/919173976450?text=I%20want%20to%20sell%20USDT"
+       target="_blank">
+       DM Us on WhatsApp or Telegram
+    </a>
+
+  </div>
+</section>
+
+<!-- SECOND SECTION -->
+<section class="platform-section">
+<div class="platform-card">
+
+<div class="platform-header">
+<div class="platform-left">
+<small>PLATFORM PRICE</small>
+<h2>1 USDT = ₹103.00</h2>
+<p>Auto refresh 30s · Next refresh in 17s</p>
+</div>
+
+<div class="base-rate">
+<small>BASE RATE</small>
+<h1>₹103.00</h1>
+</div>
+</div>
+
+<div class="domain-box">
+<p>Official domains · stay safe, always verify the URL</p>
+<div class="domains">
+<div class="domain">fingrowth.com</div>
+<div class="domain">fingrowth.net</div>
+<div class="domain">fingrowth.online</div>
+<div class="domain">fingrowth.org</div>
+<div class="domain">fingrowth.co</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- BENCHMARK -->
+<section class="benchmark-section">
+
+<div class="benchmark-title">
+<small>PEER EXCHANGE BENCHMARKS</small>
+<h2>Where other desks are clearing</h2>
+</div>
+
+<div class="benchmark-cards">
+
+<div class="benchmark-card">
+<div class="exchange-logo">
+<img src="images/wazirx.png" alt="WazirX Logo">
+</div>
+<div class="price">₹94.65</div>
+<div>
+<span class="buy">Buy ₹94.52</span> |
+<span class="sell">Sell ₹94.65</span>
+</div>
+</div>
+
+<div class="benchmark-card">
+<div class="exchange-logo">
+<img src="images/binance.png" alt="Binance Logo">
+</div>
+<div class="price">₹94.56</div>
+<div>
+<span class="buy">Buy ₹94.46</span> |
+<span class="sell">Sell ₹94.58</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- FLOATING -->
+<div class="floating">
+
+<a class="float-btn"
+href="https://wa.me/919173976450?text=I%20want%20to%20sell%20USDT"
+target="_blank">
+<img src="images/whatsapp.png" alt="WhatsApp">
+</a>
+
+<a class="float-btn"
+href="https://t.me/Angel_dxb"
+target="_blank">
+<img src="images/telegram.png" alt="Telegram">
+</a>
+
+</div>
+
+<script>
+const RATE = 103.00;
+const usdtInput = document.getElementById("usdt");
+const inrInput = document.getElementById("inr");
+const rateText = document.getElementById("rateText");
+
+function updateConversion(){
+let usdt = parseFloat(usdtInput.value) || 0;
+let inr = usdt * RATE;
+inrInput.value = inr.toFixed(2);
+}
+usdtInput.addEventListener("input", updateConversion);
+rateText.innerText = `1 USDT = ₹${RATE.toFixed(2)}`;
+updateConversion();
+</script>
+
+</body>
+<!-- FOOTER ADDED BELOW -->
+<footer class="footer">
+  <div class="footer-top">
+
+    <div class="footer-brand">
+
+  <img src="images/fingrowth.png" alt="Fingrowth Logo" class="footer-logo">
+
+  <p>Instant USDT to INR exchange.</p>
+
+  <div class="footer-mini-links">
+    <a href="#">Home</a>
+    <a href="#">Exchange</a>
+    <a href="#">Support</a>
+  </div>
+
+</div>
+
+    <div class="footer-links">
+      <h4>Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Markets</a></li>
+        <li><a href="#">Exchange</a></li>
+        <li><a href="#">Me</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-app">
+      <h4>Download app</h4>
+      <img src="images/googleplay.png" alt="Google Play">
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2020 FinGrowth. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
+</html>
